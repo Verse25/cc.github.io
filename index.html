@@ -917,21 +917,48 @@
   </section>
 
   <!-- DIY Resources -->
-  <section id="diy" class="bg-light-section">
-    <div class="container">
-      <h2>🛠️ DIY Resources</h2>
-      <p style="margin-bottom: 24px;">Access our comprehensive DIY guides and resources</p>
+<section id="diy" class="bg-light-section">
+  <div class="container">
+    <h2>🛠️ DIY Resources</h2>
+    <p style="margin-bottom: 24px;">Access our comprehensive DIY guides and resources</p>
+
+    <div class="email-signup">
+      <h3>📥 Get Instant Access to PDF Guides</h3>
+      <p>Enter your email to download our complete DIY resource library including build guides, modification plans, and technical specifications.</p>
       
-      <div class="email-signup">
-        <h3>📥 Get Instant Access to PDF Guides</h3>
-        <p>Enter your email to download our complete DIY resource library including build guides, modification plans, and technical specifications.</p>
-        <form onsubmit="handleEmailSubmit(event)">
-          <input type="email" placeholder="your.email@example.com" required>
-          <button type="submit" class="btn btn-primary">Get Access</button>
-        </form>
+      <form id="signupForm" style="display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;">
+        <input type="email" id="user_email" name="user_email" placeholder="your.email@example.com" required
+               style="flex:1;min-width:220px;max-width:420px;padding:12px 14px;border:1px solid #e6e6e6;border-radius:6px;">
+        <button id="signupBtn" type="submit" class="btn btn-primary"
+                style="padding:16px 26px;font-weight:800;background:#111;color:#fff;border-radius:8px;border:0;cursor:pointer;">
+          DOWNLOAD YOUR GUIDE
+        </button>
+      </form>
+
+      <div id="signupMsg" style="margin-top:12px;font:15px/1.4 Arial, sans-serif;color:#444;min-height:20px;text-align:center;"></div>
+
+      <!-- Pop-up confirmation (hidden by default) -->
+      <div id="dlModal" aria-hidden="true"
+           style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;">
+        <div style="background:#fff;max-width:520px;width:92%;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:24px 20px;text-align:center;">
+          <h4 style="margin:0 0 10px;font:700 22px Arial, sans-serif;">Check your inbox ✉️</h4>
+          <p style="margin:0 0 16px;font:15px/1.6 Arial, sans-serif;">
+            We just sent the guide to your email. You can also download it right now:
+          </p>
+          <p style="margin:0 0 18px;">
+            <a id="dlLink" href="/downloads/diy-shipping-container-guide.pdf" target="_blank" rel="noopener"
+               style="display:inline-block;border:1px solid #111;padding:12px 18px;font:600 15px Arial, sans-serif;color:#111;text-decoration:none;border-radius:6px;">
+              Download PDF
+            </a>
+          </p>
+          <button id="dlClose" style="background:#111;color:#fff;border:0;padding:10px 14px;font:600 14px Arial, sans-serif;cursor:pointer;border-radius:8px;">
+            Close
+          </button>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- FAQ -->
   <section id="faq">
@@ -945,14 +972,14 @@
         </div>
         <div class="accordion-content">
           <div class="accordion-content-inner">
-            <p>Yes. We accept GPC and Purchase Orders (Net‑30). Quotes use CLIN 0001 (Container EA) and CLIN 0002 (Delivery & Placement EA).</p>
+            <p>Yes. We accept GPC and Purchase Orders (Net-30). Quotes use CLIN 0001 (Container EA) and CLIN 0002 (Delivery & Placement EA).</p>
           </div>
         </div>
       </div>
       
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h3>What site conditions are required for tilt‑placement?</h3>
+          <h3>What site conditions are required for tilt-placement?</h3>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-content">
@@ -969,7 +996,7 @@
         </div>
         <div class="accordion-content">
           <div class="accordion-content-inner">
-            <p>Yes. We coordinate basic mods and can scope advanced build‑outs with partner fabricators. See the Knowledge Hub for planning PDFs.</p>
+            <p>Yes. We coordinate basic mods and can scope advanced build-outs with partner fabricators. See the Knowledge Hub for planning PDFs.</p>
           </div>
         </div>
       </div>
@@ -981,7 +1008,7 @@
         </div>
         <div class="accordion-content">
           <div class="accordion-content-inner">
-            <p>Yes—pre‑staging, rapid deployment windows, and documentation for emergency procurement. We align to ICS/NIMS workflows.</p>
+            <p>Yes—pre-staging, rapid deployment windows, and documentation for emergency procurement. We align to ICS/NIMS workflows.</p>
           </div>
         </div>
       </div>
@@ -1014,13 +1041,13 @@
         
         <div class="card">
           <div style="color: #f59e0b; font-size: 18px; margin-bottom: 10px;">★★★★★</div>
-          <p>"They understand CLINs and GPC. Easiest micro‑purchase we made all quarter."</p>
+          <p>"They understand CLINs and GPC. Easiest micro-purchase we made all quarter."</p>
           <p style="margin-top: 14px; color: var(--text-light); font-size: 14px; font-weight: 600;">— Contracting Officer</p>
         </div>
         
         <div class="card">
           <div style="color: #f59e0b; font-size: 18px; margin-bottom: 10px;">★★★★★</div>
-          <p>"Disaster staging was on point—pre‑positioned units were ready when the storm cleared."</p>
+          <p>"Disaster staging was on point—pre-positioned units were ready when the storm cleared."</p>
           <p style="margin-top: 14px; color: var(--text-light); font-size: 14px; font-weight: 600;">— Emergency Manager</p>
         </div>
       </div>
@@ -1032,9 +1059,9 @@
     <div class="container">
       <div class="logo-text">Container Coalition</div>
       <p style="font-size: 14px; opacity: 0.85; margin-top: 6px;">Good Stock HQ LLC • UEI W8SAGD11LTW8 • CAGE 15U35</p>
-      <p style="margin-top: 18px;">Service‑Area Business — we deliver to customer locations (no walk‑ins). GPC accepted.</p>
+      <p style="margin-top: 18px;">Service-Area Business — we deliver to customer locations (no walk-ins). GPC accepted.</p>
       <p style="margin-top: 14px; font-size: 16px;">
-        <a href="tel:+15138667210" style="font-weight: 700;">📞 (513) 866‑7210</a> • 
+        <a href="tel:+15138667210" style="font-weight: 700;">📞 (513) 866-7210</a> • 
         <a href="mailto:info@containercoalition.com" style="font-weight: 700;">✉️ info@containercoalition.com</a>
       </p>
       <div class="footer-divider">
@@ -1046,15 +1073,6 @@
   <script>
     // Set year
     document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Email form handler
-    function handleEmailSubmit(e) {
-      e.preventDefault();
-      const email = e.target.querySelector('input[type="email"]').value;
-      alert('Thank you! Check your email for access to our DIY resource library.');
-      // In production, this would send to your backend
-      e.target.reset();
-    }
     
     // Accordion functionality
     function toggleAccordion(header) {
@@ -1089,5 +1107,69 @@
       });
     });
   </script>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  // Init with your provided public key
+  (function(){ emailjs.init("pyuS84BPFCAtf79TX"); })();
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const form   = document.getElementById('signupForm');
+    const btn    = document.getElementById('signupBtn');
+    const msg    = document.getElementById('signupMsg') || document.getElementById('signupMsg') ;
+    const modal  = document.getElementById('dlModal');
+    const close  = document.getElementById('dlClose');
+    const pdfUrl = '/downloads/diy-shipping-container-guide.pdf';
+
+    if (!form) return; // safety
+
+    function show(status, text) {
+      if (!msg) return;
+      msg.style.color = status === 'error' ? '#b00020' : '#444';
+      msg.textContent = text || '';
+    }
+
+    function openModal() { if (modal) modal.style.display = 'flex'; }
+    function closeModal() { if (modal) modal.style.display = 'none'; }
+
+    if (close) close.addEventListener('click', closeModal);
+    if (modal) modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      const email = (document.getElementById('user_email') || {}).value || '';
+      if (!email) { show('error','Please enter a valid email.'); return; }
+
+      btn.disabled = true;
+      btn.style.opacity = .6;
+      show('info','Sending…');
+
+      // These keys map to your EmailJS template variables {{user_email}}, {{pdf_link}}, {{site_name}}
+      const params = {
+        user_email: email,
+        pdf_link: window.location.origin + pdfUrl,
+        site_name: 'Container Coalition'
+      };
+
+      try {
+        await emailjs.send('service_sh2m3bs', 'template_s1qd8lh', params);
+        show('ok','Success! Check your inbox.');
+        // auto-open the PDF in a new tab, while also showing a nice in-page popup
+        const dl = document.getElementById('dlLink');
+        if (dl) dl.setAttribute('href', pdfUrl);
+        openModal();
+        window.open(pdfUrl, '_blank', 'noopener');
+        form.reset();
+      } catch (err) {
+        console.error('EmailJS send error:', err);
+        show('error','Could not send. Please try again in a moment.');
+      } finally {
+        btn.disabled = false;
+        btn.style.opacity = 1;
+      }
+    });
+  });
+</script>
 </body>
 </html>
